@@ -8,8 +8,8 @@ class Book:
         self.aye_meta = []
         self.words = []
         self.uniqWords = []
+        self.uniqWordsRatio = []
         self.basicInstruction()
-        self.findUniqs()
 
     def basicInstruction(self):
         for soor in self.book:
@@ -35,3 +35,19 @@ class Book:
                     isin = True
             if not isin:
                 self.uniqWords.append(word)
+
+    def findUniqRatio(self):
+        size = 0
+        for word in self.words:
+            isin = False
+            i = 0
+            while i < size and not isin:
+                uword = self.uniqWordsRatio[i]
+                if uword[0] == word:
+                    uword = (uword[0], uword[1] + 1)
+                    self.uniqWordsRatio[i] = uword
+                    isin = True
+                i = i + 1
+            if not isin:
+                size = size + 1
+                self.uniqWordsRatio.append((word, 1))

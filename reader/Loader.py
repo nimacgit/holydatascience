@@ -1,4 +1,6 @@
 import pickle
 
-with open('company_data.pkl', 'rb') as input:
-    company1 = pickle.load(input)
+def loadTheBook(path = 'data/mybook.pkl'):
+    qfile = open(path, 'rb')
+    qbook = pickle.load(qfile)
+    return qbook
